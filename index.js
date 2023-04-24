@@ -3,7 +3,7 @@ const express = require("express");
 require("dotenv").config();
 const database = require("./src/database");
 const app = express();
-
+const User = require ("./src/models/user");
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,7 +22,7 @@ app.get("/", function (req,res){
 
 app.get("/user-list", (req,res) => {
     User.find({}).then(rs=>{
-        res.render("/usersList",{
+        res.render("usersList",{
             item: rs
         });
     }).catch(err=>{
@@ -34,7 +34,7 @@ app.get("/createUser", function (req,res){
     const  Student = require("./src/models/user");
     Student.find({}).then(rs=>{
 
-        res.render("/createUser",{
+        res.render("createUser",{
             items: rs
         });
 

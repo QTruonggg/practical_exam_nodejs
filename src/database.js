@@ -1,5 +1,5 @@
-const server = process.env.MONGODB_URI;
-const database = process.env.DATABASE_NAME;
+const server = "mongodb://127.0.0.1:27017";
+const database = "Ex";
 let mongoose = require("mongoose");
 
 class Database {
