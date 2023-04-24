@@ -25,7 +25,7 @@ app.get("/", function (req,res){
         name: "T2203E",
         room: "B14"
     }
-    res.render("home",{
+    res.render("createUser",{
         student: student,
         classRoom: classRoom
     });
