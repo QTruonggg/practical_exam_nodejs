@@ -17,17 +17,29 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.get("/", function (req,res){
-    let student = {
-        name : "Quang Truong",
-        age: 24
-    };
-    let classRoom = {
-        name: "T2203E",
-        room: "B14"
-    }
-    res.render("createUser",{
-        student: student,
-        classRoom: classRoom
+    res.render("home",);
+});
+
+app.get("/user-list", (req,res) => {
+    User.find({}).then(rs=>{
+        res.render("/usersList",{
+            item: rs
+        });
+    }).catch(err=>{
+        res.send(err);
+    });
+})
+
+app.get("/createUser", function (req,res){
+    const  Student = require("./src/models/user");
+    Student.find({}).then(rs=>{
+
+        res.render("/createUser",{
+            items: rs
+        });
+
+    }).catch(err=>{
+        res.send(err);
     });
 });
 
