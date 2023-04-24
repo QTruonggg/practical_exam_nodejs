@@ -16,6 +16,10 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+const userRouter = require("./src/routes/user.router");
+app.use("/",userRouter);
+
+
 app.get("/", function (req,res){
     res.render("home",);
 });
@@ -30,16 +34,5 @@ app.get("/user-list", (req,res) => {
     });
 })
 
-app.get("/createUser", function (req,res){
-    const  Student = require("./src/models/user");
-    Student.find({}).then(rs=>{
 
-        res.render("createUser",{
-            items: rs
-        });
-
-    }).catch(err=>{
-        res.send(err);
-    });
-});
 

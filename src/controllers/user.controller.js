@@ -15,7 +15,7 @@ exports.save = (req,res)=>{
     let s = req.body;
     let newUser = new User(s);
     newUser.save().then(rs=>{
-        res.redirect("/");
+        res.redirect("/user-list");
     }).catch(err=>{
         res.send(err);
     })
